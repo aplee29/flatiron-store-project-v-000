@@ -1,4 +1,6 @@
 <h1><%= @item.title %></h1>
 <h2>Price: $<%= @item.price/100 %></h2>
 
-<%= button_to "Add to Cart", line_items_path(item_id: @item) %>
+<% if current_user %>
+  <%= button_to "Add to Cart", line_items_path(item_id: @item) %>
+<% end %>

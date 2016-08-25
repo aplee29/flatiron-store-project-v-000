@@ -2,6 +2,12 @@
   <%= link_to category.title, category_path(category) %>
 <% end %>
 
+<br><br>
+
 <% @items.each do |item| %>
-  <p><%= link_to item.title, item_path(item) %> | <%= number_to_currency(item.price/100) %> | <%= button_to 'Add to Cart', line_items_path(item_id: item) %></p>
+  <p><%= link_to item.title, item_path(item) %> | <%= number_to_currency(item.price/100) %></p>
+
+  <% if current_user %> 
+    <%= button_to 'Add to Cart', line_items_path(item_id: item) %>
+  <% end %>
 <% end %>
